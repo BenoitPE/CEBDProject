@@ -21,6 +21,7 @@ CREATE TABLE LesEquipiers
   CONSTRAINT EQ_CK1 CHECK(numEq > 0)
 );
 
+-- TODO 1.3a : ajouter la création de la table LesDisciplines et ajouter l'attribut discipline dans la table LesEpreuves
 CREATE TABLE LesDisciplines
 (
   nomDi VARCHAR2(40) NOT NULL,
@@ -65,6 +66,7 @@ CREATE TABLE LesResultats
   CONSTRAINT RES_FK3 FOREIGN KEY (bronze, numEp) REFERENCES LesInscriptions(numIn,numEp),
   CONSTRAINT RES_CK1 CHECK (gold<>silver AND silver<>bronze AND gold<>bronze)
 );
+
 -- TODO 1.2a : ajouter la définition de la vue LesSportifs
 CREATE VIEW LesSportifs
 AS
@@ -78,7 +80,7 @@ SELECT
   (strftime('%Y', date('now')) - strftime('%Y', dateNaisSp)) AS ageSp
   FROM
   LesSportifs_base;
--- TODO 1.3a : ajouter la création de la table LesDisciplines et ajouter l'attribut discipline dans la table LesEpreuves
+
 -- TODO 1.4a : ajouter la définition de la vue LesEquipes
 CREATE VIEW LesEquipes
 AS

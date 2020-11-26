@@ -24,7 +24,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_3"/>
+      <widget class="QComboBox" name="combobox_fct_comp_3"/>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton">
