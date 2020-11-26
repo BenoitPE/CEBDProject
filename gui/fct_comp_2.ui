@@ -35,12 +35,28 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Saisissez une catégorie :</string>
+        <string>Choisissez une catégorie :</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_2"/>
+      <widget class="QComboBox" name="combobox_fct_comp_2">
+       <item>
+        <property name="text">
+         <string>masculin</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>feminin</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mixte</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_fct_comp_2">
