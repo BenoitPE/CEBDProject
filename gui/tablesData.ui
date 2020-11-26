@@ -493,6 +493,11 @@
            <string>dateNaisSp</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>ageSp</string>
+          </property>
+         </column>
         </widget>
        </item>
        <item>
