@@ -26,7 +26,7 @@ class AppFctComp2(QDialog):
             try:
                 cursor = self.data.cursor()
                 result = cursor.execute(
-                    "SELECT numEp, nomEp, formeEp, nomDi, nbSportifsEp, dateEp FROM LesEpreuves WHERE categorieSp = ?",
+                    "SELECT numEp, nomEp, formeEp, nomDi, nbSportifsEp, dateEp FROM LesEpreuves WHERE categorieEp = ?",
                     [self.ui.lineEdit_fct_comp_2.text().strip()])
             except Exception as e:
                 self.ui.table_fct_comp_2.setRowCount(0)
