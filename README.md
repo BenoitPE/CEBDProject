@@ -17,3 +17,4 @@ chore : modification répétitive de code.
 build : changements qui affectent le système de build ou des dépendances externes (npm, make...).
 ci : changements concernant les fichiers et scripts d'intégration ou de configuration (Travis, Ansible, BrowserStack...).
 perf : amélioration des performances.
+merge : synchronisation entre les utilisateurs.
