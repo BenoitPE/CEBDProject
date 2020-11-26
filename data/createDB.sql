@@ -68,7 +68,6 @@ SELECT
   categorieSp,
   dateNaisSp,
   (strftime('%Y', date('now')) - strftime('%Y', dateNaisSp)) AS ageSp
-  -- (date('now') - date(dateNaisSp)) AS ageSp
 FROM
   LesSportifs_base;
 -- TODO 1.3a : ajouter la création de la table LesDisciplines et ajouter l'attribut discipline dans la table LesEpreuves
