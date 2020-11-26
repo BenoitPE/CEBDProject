@@ -16,13 +16,15 @@ class AppFctComp3(QDialog):
         self.loadCategoriesInComboBox()
 
 
-    # Fonctiob de chargement des categories dans la liste déroulante
+    # Fonction de chargement des categories dans la liste déroulante
     def loadCategoriesInComboBox(self):
-        cursor = self.data.cursor()
-        result = cursor.execute(
-            "SELECT DISTINCT categorieEp FROM LesEpreuves")
-        for row in result:
-            self.ui.combobox_fct_comp_3.addItem(row[0])
+        try:
+            cursor = self.data.cursor()
+            result = cursor.execute("SELECT DISTINCT categorieEp FROM LesEpreuves")
+        except Exception as e:
+            self.ui.combobox_fct_comp_3.clear()
+        else:
+            display.refreshGenericCombo(self.ui.combobox_fct_comp_3, result)
 
     # Fonction de mise à jour de l'affichage
     @pyqtSlot()
