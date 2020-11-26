@@ -158,7 +158,7 @@ class AppWindow(QMainWindow):
             self.fct_comp_4_dialog.close()
         self.fct_comp_4_dialog = AppFctComp4(self.data)
         self.fct_comp_4_dialog.show()
-        self.changedValue.connect(self.fct_comp_4_dialog.refreshCatList)
+        self.changedValue.connect(self.fct_comp_4_dialog.refreshPaysList)
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)

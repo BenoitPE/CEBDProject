@@ -47,7 +47,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox_fct_4_equipe"/>
+      <widget class="QComboBox" name="comboBox_fct_4_equipe"/>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_fct_4">
