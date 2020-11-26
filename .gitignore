@@ -4,3 +4,4 @@ actions/__pycache__/*
 utils/__pycache__/*
 .pylintrc
 data/jo.db
+.vscode

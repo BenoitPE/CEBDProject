@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Nom, Prénom, pays, catégorie des sportifs d'une équipe</string>
+   <string>Nom, Prénom, date de naissance, pays, catégorie, des sportifs d'une équipe</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -42,9 +42,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item alignment="Qt::AlignHCenter">
       <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Travail à réaliser : Ajouter la date de naissance des sportifs de l'équipe</string>
-       </property>
+       <!-- <property name="text"> -->
+        <!-- <string>Travail à réaliser : Ajouter la date de naissance des sportifs de l'équipe</string> -->
+       <!-- </property> -->
        <property name="scaledContents">
         <bool>false</bool>
        </property>
@@ -74,6 +74,11 @@
      <column>
       <property name="text">
        <string>prenomSp</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>dateNaisSp</string>
       </property>
      </column>
      <column>
