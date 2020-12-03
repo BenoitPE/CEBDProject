@@ -12,6 +12,7 @@ from actions.action_fct_comp_1 import AppFctComp1
 from actions.action_fct_comp_2 import AppFctComp2
 from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
+from actions.action_fct_inte_1 import AppFctInte1
 from actions.action_fct_inte_2 import AppFctInte2
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
@@ -31,6 +32,7 @@ class AppWindow(QMainWindow):
     fct_comp_2_dialog = None
     fct_comp_3_dialog = None
     fct_comp_4_dialog = None
+    fct_inte_1_dialog = None
     fct_inte_2_dialog = None
 
     # Constructeur
@@ -162,6 +164,16 @@ class AppWindow(QMainWindow):
         self.fct_comp_4_dialog.show()
         self.changedValue.connect(self.fct_comp_4_dialog.refreshPaysList)
 
+
+    # En cas de clic sur la fonction d'interrogation 1
+    def open_fct_inte_1(self):
+        if self.fct_inte_1_dialog is not None:
+            self.fct_inte_1_dialog.close()
+        self.fct_inte_1_dialog = AppFctInte1(self.data)
+        self.fct_inte_1_dialog.show()
+        self.changedValue.connect(self.fct_inte_1_dialog.refreshAgeEquipeOrList)
+    
+    # En cas de clic sur la fonction d'interrogation 2
     def open_fct_inte_2(self):
         if self.fct_inte_2_dialog is not None:
             self.fct_inte_2_dialog.close()
@@ -194,6 +206,8 @@ class AppWindow(QMainWindow):
             self.fct_comp_3_dialog.close()
         if (self.fct_comp_4_dialog is not None):
             self.fct_comp_4_dialog.close()
+        if (self.fct_inte_1_dialog is not None):
+            self.fct_inte_1_dialog.close()
         if (self.fct_inte_2_dialog is not None):
             self.fct_inte_2_dialog.close()
 

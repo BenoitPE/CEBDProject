@@ -1092,6 +1092,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_fct_inte_1()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>505</x>
+     <y>691</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>688</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>createDB()</slot>
@@ -1107,5 +1123,6 @@
   <slot>open_fct_comp_3()</slot>
   <slot>open_fct_comp_4()</slot>
   <slot>open_fct_inte_2()</slot>
+  <slot>open_fct_inte_1()</slot>
  </slots>
 </ui>
