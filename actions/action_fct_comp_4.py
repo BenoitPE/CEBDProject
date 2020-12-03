@@ -20,6 +20,7 @@ class AppFctComp4(QDialog):
         self.ui.comboBox_fct_4_pays.currentIndexChanged.connect(self.refreshEquipeList)
 
     # Fonction de mise à jour de l'affichage
+    @pyqtSlot()
     def refreshResult(self):
         # TODO 1.7 : fonction à modifier pour que l'équipe ne propose que des valeurs possibles pour le pays choisi
         display.refreshLabel(self.ui.label_fct_comp_4, "")
@@ -53,7 +54,6 @@ class AppFctComp4(QDialog):
             display.refreshGenericCombo(self.ui.comboBox_fct_4_equipe, result)
 
     # Fonction de mise à jour des pays
-    @pyqtSlot()
     def refreshPaysList(self):
         try:
             cursor = self.data.cursor()

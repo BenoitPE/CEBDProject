@@ -164,7 +164,7 @@ class AppWindow(QMainWindow):
             self.fct_comp_4_dialog.close()
         self.fct_comp_4_dialog = AppFctComp4(self.data)
         self.fct_comp_4_dialog.show()
-        self.changedValue.connect(self.fct_comp_4_dialog.refreshPaysList)
+        self.changedValue.connect(self.fct_comp_4_dialog.refreshResult)
 
 
     # En cas de clic sur la fonction d'interrogation 1
