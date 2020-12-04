@@ -181,7 +181,9 @@ class AppFctModi2(QDialog):
             FROM LesResultats
             WHERE numEp = ?""",
             [self.ui.cb_supprimer_epreuve.currentText()])
-
+            self.refreshEpreuveListInsertion()
+            self.refreshEpreuveListModification()
+            self.refreshEpreuveListSuppression()
             display.refreshLabel(self.ui.label_fct_modi_2, "Les résultats ont été supprimés")
 
         except Exception as e:

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>407</width>
     <height>300</height>
    </rect>
   </property>
@@ -31,14 +31,14 @@
        <widget class="QComboBox" name="comboBox_fct_modi_1_epreuve_inscription"/>
       </item>
       <item>
-       <widget class="QLabel" name="label_2_fct_modi_1_participant_inscription">
+       <widget class="QLabel" name="label_fct_modi_1_participant_inscription">
         <property name="text">
          <string>Participant</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="comboBox_fct_modi_1_particpant_inscription"/>
+       <widget class="QComboBox" name="comboBox_fct_modi_1_participant_inscription"/>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_fct_modi_1_inscription">
@@ -64,7 +64,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="comboBox_fct_modi_1_epreuve_desincriptipn"/>
+       <widget class="QComboBox" name="comboBox_fct_modi_1_epreuve_desinscription"/>
       </item>
       <item>
        <widget class="QLabel" name="label_fct_modi_1_participant_desinscription">

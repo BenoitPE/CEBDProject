@@ -22,19 +22,16 @@ class AppFctInte2(QDialog):
         display.refreshLabel(self.ui.label_fct_inte_2, "")
         try:
             cursor = self.data.cursor()
-            cursor.execute("""
-            CREATE VIEW LesEquipesPays
-            AS
-            SELECT e.numEq, pays, COUNT(e.numSp) AS nbEquipiersEq
-            FROM LesEquipiers e
-            JOIN LesSportifs s ON e.numSp = s.numSp 
-            GROUP BY e.numEq""")
 
-            cursor = self.data.cursor()
             result = cursor.execute("""
             WITH TousLesPays AS (
                 SELECT DISTINCT pays
                 FROM LesSportifs
+            ), LesEquipesPays AS (
+                SELECT e.numEq, pays
+                FROM LesEquipiers e
+                JOIN LesSportifs s ON e.numSp = s.numSp 
+                GROUP BY e.numEq
             ), MedaillesOrSportifParPays AS (
                 SELECT s.pays, COUNT(r.gold) AS nbOrSportif
                 FROM LesResultats r
@@ -66,7 +63,6 @@ class AppFctInte2(QDialog):
                 JOIN LesEquipesPays e ON r.bronze = e.numEq
                 GROUP BY e.pays
             )
-
             SELECT p.pays, (ifnull(osp.nbOrSportif, 0) + ifnull(oeq.nbOrEquipe, 0)) AS nbOrPays, (ifnull(asp.nbArgentSportif, 0) + ifnull(aeq.nbArgentEquipe, 0)) AS nbArgentPays, (ifnull(bsp.nbBronzeSportif, 0) + ifnull(beq.nbBronzeEquipe, 0)) AS nbBronzePays
             FROM TousLesPays p
             LEFT JOIN MedaillesOrSportifParPays osp ON p.pays = osp.pays
@@ -78,11 +74,7 @@ class AppFctInte2(QDialog):
             GROUP BY p.pays
             ORDER BY nbOrPays DESC, nbArgentPays DESC, nbBronzePays DESC
             """)
-            
-            cursor = self.data.cursor()
-            cursor.execute("""
-            DROP VIEW IF EXISTS LesEquipesPays
-            """)
+
         except Exception as e:
             self.ui.table_fct_inte_2.setRowCount(0)
             display.refreshLabel(
