@@ -3,7 +3,7 @@ import sys, sqlite3
 from utils import db
 from utils import display
 from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from PyQt5 import uic
 from actions.action_tablesData import AppTablesData
 from actions.action_fct_fournie_1 import AppFctFournie1
@@ -190,6 +190,19 @@ class AppWindow(QMainWindow):
             self.fct_modi_1_dialog.close()
         self.fct_modi_1_dialog = AppFctModi1(self.data)
         self.fct_modi_1_dialog.show()
+        # On connecte le signal de changement des données pour propager tous les changements dans les fenêtres
+        self.fct_modi_1_dialog.dataChanged.connect(self.propagateChanges)
+        # On connecte changedValue au refresh des listes de participants
+        # On pourrait faire plusieurs signaux pour que s'il y ait un changement sur les épreuves, on rafraîchit les épreuves uniquement, etc...
+        # Pour l'instant, nous avons fait simple comme nous n'avons pas d'interface pour ajouter, modifier ou supprimer des épreuves
+        self.changedValue.connect(self.fct_modi_1_dialog.refreshParticipantListInscription)
+        self.changedValue.connect(self.fct_modi_1_dialog.refreshParticipantListDesinscription)
+
+
+
+    @pyqtSlot()
+    def propagateChanges(self):
+        self.changedValue.emit()
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)

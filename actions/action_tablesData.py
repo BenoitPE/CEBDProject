@@ -38,18 +38,18 @@ class AppTablesData(QDialog):
     @pyqtSlot()
     def refreshAllTables(self):
 
-        self.refreshTable(self.ui.label_equipiers, self.ui.tableEquipiers, "SELECT numEq, numSp  FROM LesEquipiers")
+        self.refreshTable(self.ui.label_equipiers, self.ui.tableEquipiers, "SELECT numEq, numSp  FROM LesEquipiers ORDER BY numEq ASC, numSp ASC")
         
-        self.refreshTable(self.ui.label_epreuves, self.ui.tableEpreuves, "SELECT numEp, nomEp, formeEp, categorieEp, nbSportifsEp, dateEp, nomDi FROM LesEpreuves")
-        self.refreshTable(self.ui.label_inscriptions, self.ui.tableInscriptions, "SELECT numIn, numEp FROM LesInscriptions")
-        self.refreshTable(self.ui.label_resultats, self.ui.tableResultats, "SELECT numEp, gold, silver, bronze FROM LesResultats")
+        self.refreshTable(self.ui.label_epreuves, self.ui.tableEpreuves, "SELECT numEp, nomEp, formeEp, categorieEp, nbSportifsEp, dateEp, nomDi FROM LesEpreuves ORDER BY numEp ASC")
+        self.refreshTable(self.ui.label_inscriptions, self.ui.tableInscriptions, "SELECT numIn, numEp FROM LesInscriptions ORDER BY numEp ASC, numIn ASC")
+        self.refreshTable(self.ui.label_resultats, self.ui.tableResultats, "SELECT numEp, gold, silver, bronze FROM LesResultats ORDER BY numEp")
 
         # TODO 1.2b : ajouter l'affichage des éléments de la vue LesSportifs après l'avoir créée
-        self.refreshTable(self.ui.label_sportifs, self.ui.tableSportifs, "SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), ageSp FROM LesSportifs")
+        self.refreshTable(self.ui.label_sportifs, self.ui.tableSportifs, "SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), ageSp FROM LesSportifs ORDER BY numSp")
 
         # TODO 1.3d : afficher le contenu de la table LesDisciplines et ajouter l'attribut discipline dans l'affichage de la table LesEpreuves
         self.refreshTable(self.ui.label_disciplines, self.ui.tableDisciplines, "SELECT nomDi FROM LesDisciplines")
         
         # TODO 1.4b : ajouter l'affichage des éléments de la vue LesEquipes après l'avoir créée
-        self.refreshTable(self.ui.label_equipes, self.ui.tableEquipes, "SELECT numEq, nbEquipiersEq FROM LesEquipes")
+        self.refreshTable(self.ui.label_equipes, self.ui.tableEquipes, "SELECT numEq, nbEquipiersEq FROM LesEquipes ORDER BY numEq")
 
