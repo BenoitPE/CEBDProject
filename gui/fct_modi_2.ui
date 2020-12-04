@@ -7,23 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>693</width>
-    <height>311</height>
+    <height>578</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Gestion des inscriptions / désinscriptions</string>
+   <string>Gestion des résultats</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox_fct_modi_1_inscription">
+    <widget class="QGroupBox" name="groupBox_fct_modi_2_insertion">
      <property name="title">
-      <string>Insérer des résultats</string>
+      <string>Insérer des résultats pour une épreuve</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <layout class="QVBoxLayout" name="vl_insert_1">
         <property name="spacing">
-         <number>0</number>
+         <number>6</number>
         </property>
         <item>
          <widget class="QLabel" name="epreuve">
@@ -45,7 +45,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cb_epreuve">
+         <widget class="QComboBox" name="cb_inserer_epreuve">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -69,7 +69,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cb_gold"/>
+         <widget class="QComboBox" name="cb_inserer_or">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -89,7 +93,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cb_silver"/>
+         <widget class="QComboBox" name="cb_inserer_argent"/>
         </item>
        </layout>
       </item>
@@ -109,21 +113,127 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cb_bronze"/>
+         <widget class="QComboBox" name="cb_inserer_bronze"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QVBoxLayout" name="vl_insert_5">
         <item>
-         <widget class="QPushButton" name="pushButton_insert">
+         <widget class="QPushButton" name="button_inserer">
           <property name="text">
            <string>Insérer</string>
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_fct_modi_2_modification">
+     <property name="title">
+      <string>Modifier des résultats d'une épreuve</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="vl_modif_1">
+        <property name="spacing">
+         <number>6</number>
+        </property>
         <item>
-         <widget class="QPushButton" name="pushButton_modi">
+         <widget class="QLabel" name="epreuve_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Epreuve</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cb_modifier_epreuve">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="vl_modif_2">
+        <item>
+         <widget class="QLabel" name="medailleOr_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Mdéaille d'Or</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cb_modifier_or"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="vl_modif_3">
+        <item>
+         <widget class="QLabel" name="medailleArgent_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Médaille d'Argent</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cb_modifier_argent"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="vl_modif_4">
+        <item>
+         <widget class="QLabel" name="medailleBronze_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Médaille de Bronze</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cb_modifier_bronze"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="vl_modif_5">
+        <item>
+         <widget class="QPushButton" name="button_modifier">
           <property name="text">
            <string>Modifier</string>
           </property>
@@ -135,7 +245,52 @@
     </widget>
    </item>
    <item>
+    <widget class="QGroupBox" name="groupBox_fct_modi_2_suppression">
+     <property name="title">
+      <string>Supprimer les résultats d'une épreuve</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <layout class="QVBoxLayout" name="vl_delete_1">
+        <item>
+         <widget class="QLabel" name="epreuve_3">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Epreuve</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cb_supprimer_epreuve"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_supprimer">
+          <property name="text">
+           <string>Supprimer</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QLabel" name="label_fct_modi_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="text">
       <string>TextLabel</string>
      </property>
@@ -147,5 +302,59 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>button_inserer</sender>
+   <signal>clicked()</signal>
+   <receiver>fct_modi_1</receiver>
+   <slot>insererResultat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>669</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>43</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_modifier</sender>
+   <signal>clicked()</signal>
+   <receiver>fct_modi_1</receiver>
+   <slot>modifierResultat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>651</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>687</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_supprimer</sender>
+   <signal>clicked()</signal>
+   <receiver>fct_modi_1</receiver>
+   <slot>supprimerResultat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>662</x>
+     <y>499</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>686</x>
+     <y>516</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>insererResultat()</slot>
+  <slot>modifierResultat()</slot>
+  <slot>supprimerResultat()</slot>
+ </slots>
 </ui>

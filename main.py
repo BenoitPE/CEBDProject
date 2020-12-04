@@ -14,7 +14,7 @@ from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
 from actions.action_fct_inte_1 import AppFctInte1
 from actions.action_fct_inte_2 import AppFctInte2
-
+from actions.action_fct_modi_1 import AppFctModi1
 from actions.action_fct_modi_2 import AppFctModi2
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
@@ -36,7 +36,7 @@ class AppWindow(QMainWindow):
     fct_comp_4_dialog = None
     fct_inte_1_dialog = None
     fct_inte_2_dialog = None
-
+    fct_modi_1_dialog = None
     fct_modi_2_dialog = None
 
     # Constructeur
@@ -185,13 +185,22 @@ class AppWindow(QMainWindow):
         self.fct_inte_2_dialog.show()
         self.changedValue.connect(self.fct_inte_2_dialog.refreshClassementPaysList)
 
+    # En cas de clic sur la fonction de modification 1
+    def open_fct_modi_1(self):
+        if self.fct_modi_1_dialog is not None:
+            self.fct_modi_1_dialog.close()
+        self.fct_modi_1_dialog = AppFctModi1(self.data)
+        self.fct_modi_1_dialog.show()
+    
     # En cas de clic sur la fonction de modification 2
     def open_fct_modi_2(self):
         if self.fct_modi_2_dialog is not None:
             self.fct_modi_2_dialog.close()
         self.fct_modi_2_dialog = AppFctModi2(self.data)
         self.fct_modi_2_dialog.show()
-        self.changedValue.connect(self.fct_modi_2_dialog.loadCategoriesInComboBox)
+        # self.changedValue.connect(self.fct_modi_2_dialog.refreshUpdateParticipants)
+
+
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
@@ -222,7 +231,8 @@ class AppWindow(QMainWindow):
             self.fct_inte_1_dialog.close()
         if (self.fct_inte_2_dialog is not None):
             self.fct_inte_2_dialog.close()
-
+        if (self.fct_modi_1_dialog is not None):
+            self.fct_modi_1_dialog.close()
         if (self.fct_modi_2_dialog is not None):
             self.fct_modi_2_dialog.close()
 

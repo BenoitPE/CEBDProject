@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>fct_modi_1</class>
+ <widget class="QDialog" name="fct_modi_1">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des inscriptions / désinscriptions</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_fct_modi_1_inscription">
+     <property name="title">
+      <string>Inscription</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_fct_modi_1_epreuve_inscription">
+        <property name="text">
+         <string>Epreuve</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_fct_modi_1_epreuve_inscription"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2_fct_modi_1_participant_inscription">
+        <property name="text">
+         <string>Participant</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_fct_modi_1_particpant_inscription"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_fct_modi_1_inscription">
+        <property name="text">
+         <string>Inscrire</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_fct_modi_1_desinscription">
+     <property name="title">
+      <string>Désinscription</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_fct_modi_1_epreuve_desinscription">
+        <property name="text">
+         <string>Epreuve</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_fct_modi_1_epreuve_desincriptipn"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_fct_modi_1_participant_desinscription">
+        <property name="text">
+         <string>Participant</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_fct_modi_1_participant_desinscription"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_fct_modi_1_desinscription">
+        <property name="text">
+         <string>Désinscrire</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_fct_modi_1_information">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
