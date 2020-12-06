@@ -2,11 +2,14 @@
 import sqlite3
 from utils import display
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from PyQt5 import uic
 
 # Classe permettant d'afficher la fonction d'interrogation 1
 class AppFctModi2(QDialog):
+
+    # Signal émis lorsque'un changement dans la base de données et qu'un commit a eu lieu
+    dataChanged = pyqtSignal()
 
     # Constructeur
     def __init__(self, data:sqlite3.Connection):
@@ -14,16 +17,14 @@ class AppFctModi2(QDialog):
         self.ui = uic.loadUi("gui/fct_modi_2.ui", self)
         self.data = data
 
-        # Relatifs a l'insertion
-        self.refreshEpreuveListInsertion()
+        self.ui.cb_modifier_epreuve.currentIndexChanged.connect(self.refreshParticipantListModification)
         self.ui.cb_inserer_epreuve.currentIndexChanged.connect(self.refreshParticipantListInsertion)
 
-        # Relatifs a la modification 
-        self.refreshEpreuveListModification()
-        self.ui.cb_modifier_epreuve.currentIndexChanged.connect(self.refreshParticipantListModification)
-
-        # Relatifs a la suppression 
+        self.refreshEpreuveListInsertion()
+        self.refreshEpreuveListModification() 
         self.refreshEpreuveListSuppression()
+
+    #------------ Partie Insertion -----------------
 
     # Fonction de chargement des categories dans la liste déroulante
     @pyqtSlot()
@@ -40,7 +41,6 @@ class AppFctModi2(QDialog):
             self.ui.cb_inserer_epreuve.clear()
         else:
             display.refreshGenericCombo(self.ui.cb_inserer_epreuve, result)
-            self.refreshParticipantListInsertion()
 
     # Fonction de chargement de tous les participants
     def refreshParticipantListInsertion(self):
@@ -76,15 +76,16 @@ class AppFctModi2(QDialog):
                 result = cursor.execute(
                     """INSERT INTO LesResultats (numEp, gold, silver, bronze) VALUES (?, ?, ?, ?)""",
                     [self.ui.cb_inserer_epreuve.currentText(), medailleOr, medailleArgent, medailleBronze])
-                self.refreshEpreuveListInsertion()
-                self.refreshEpreuveListModification()
-                display.refreshLabel(self.ui.label_fct_modi_2, "Le résultat a été ajouté")
             else:
-                display.refreshLabel(self.ui.label_fct_modi_2, "Impossible d'ajouter les résultats : des participants sont identiques")
-
+                raise Exception("Impossible d'ajouter les résultats : des participants sont identiques")
         except Exception as e:
+            self.data.rollback()
             display.refreshLabel(self.ui.label_fct_modi_2, "Impossible d'ajouter ce résultat : " + repr(e))
-            self.refreshEpreuveListModification()
+        else:
+            display.refreshLabel(self.ui.label_fct_modi_2, "Le résultat a été ajouté")
+            self.data.commit()
+            self.dataChanged.emit()
+
 
     #------------ Partie Modification -----------------
 
@@ -151,14 +152,19 @@ class AppFctModi2(QDialog):
                 SET gold = ?, silver = ?, bronze = ?
                 WHERE numEp = ?""",
                 [medailleOr, medailleArgent, medailleBronze, self.ui.cb_modifier_epreuve.currentText()])
-
-                display.refreshLabel(self.ui.label_fct_modi_2, "Le résultat a été modifié")
             else:
-                display.refreshLabel(self.ui.label_fct_modi_2, "Impossible de modifier les résultats : des participants sont identiques")
+                raise Exception("Impossible de modifier les résultats : des participants sont identiques")
 
         except Exception as e:
+            self.data.rollback()
             display.refreshLabel(self.ui.label_fct_modi_2, "Impossible de modifier ce résultat : " + repr(e))
+        else:
+            display.refreshLabel(self.ui.label_fct_modi_2, "Le résultat a été modifié")
+            self.data.commit()
+            self.dataChanged.emit()
 
+
+    #------------ Partie Suppression -----------------
 
     def refreshEpreuveListSuppression(self):
         display.refreshLabel(self.ui.label_fct_modi_2, "")
@@ -181,10 +187,10 @@ class AppFctModi2(QDialog):
             FROM LesResultats
             WHERE numEp = ?""",
             [self.ui.cb_supprimer_epreuve.currentText()])
-            self.refreshEpreuveListInsertion()
-            self.refreshEpreuveListModification()
-            self.refreshEpreuveListSuppression()
-            display.refreshLabel(self.ui.label_fct_modi_2, "Les résultats ont été supprimés")
-
         except Exception as e:
+            self.data.rollback()
             display.refreshLabel(self.ui.label_fct_modi_2, "Impossible de supprimer les résultats : " + repr(e))
+        else:
+            display.refreshLabel(self.ui.label_fct_modi_2, "Les résultats ont été supprimés")
+            self.data.commit()
+            self.dataChanged.emit()

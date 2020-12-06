@@ -199,13 +199,19 @@ class AppWindow(QMainWindow):
         self.changedValue.connect(self.fct_modi_1_dialog.refreshParticipantListInscription)
         self.changedValue.connect(self.fct_modi_1_dialog.refreshParticipantListDesinscription)
 
-# En cas de clic sur la fonction de modification 2
+    # En cas de clic sur la fonction de modification 2
     def open_fct_modi_2(self):
         if self.fct_modi_2_dialog is not None:
             self.fct_modi_2_dialog.close()
         self.fct_modi_2_dialog = AppFctModi2(self.data)
         self.fct_modi_2_dialog.show()
+        self.fct_modi_2_dialog.dataChanged.connect(self.propagateChanges)
+        self.changedValue.connect(self.fct_modi_2_dialog.refreshEpreuveListInsertion)
+        self.changedValue.connect(self.fct_modi_2_dialog.refreshEpreuveListModification)
+        self.changedValue.connect(self.fct_modi_2_dialog.refreshEpreuveListSuppression)
 
+
+    # Slot de propagation de données pour la synchronisation
     @pyqtSlot()
     def propagateChanges(self):
         self.changedValue.emit()
