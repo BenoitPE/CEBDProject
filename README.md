@@ -1,13 +1,13 @@
 # CEBDProject
 
-Message de commit : type(scope) : sujet
+## Message de commit : type(scope) : sujet
 
 type : Le type de commit effectué.
 scope : Le numéro de tâche ou numéro de question.
 sujet : Les détails concernant le commit.
 
-Liste des types :
-feat : une fonctionnalité pour l'utilisateur.
+## Liste des types :
+'feat' : une fonctionnalité pour l'utilisateur.
 fix : une rapide correction de bug.
 refactor : une modification d'une partie du code pour optimisation.
 test : ajout ou modification de test dans l'application.
