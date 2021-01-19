@@ -1,6 +1,6 @@
 # CEBDProject
 
-## Message de commit : type(scope) : sujet
+## Convetion de nommage pour les messages de commit : type(scope) : sujet
 
 type : Le type de commit effectué.
 scope : Le numéro de tâche ou numéro de question.
