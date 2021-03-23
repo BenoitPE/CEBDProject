@@ -1,4 +1,4 @@
-# CEBDProject
+# Projet Base de données en Python et QT
 
 ## Convention de nommage pour les messages de commit : type(scope) : sujet
 
